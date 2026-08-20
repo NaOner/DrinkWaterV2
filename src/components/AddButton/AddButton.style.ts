@@ -1,24 +1,27 @@
-import {StyleSheet} from "react-native";
+// src/components/AddButton/AddButton.style.ts
+import { StyleSheet } from "react-native";
 
 const style = StyleSheet.create({
     component: {
-        backgroundColor: "#16a8e4",
-        alignSelf: "stretch",
-        height: "auto",
-        marginTop: 15,
-        marginBottom: 15,
-        marginLeft: 25,
-        marginRight: 25,
-        padding: 20,
-        justifyContent: "center",
+        backgroundColor: "rgb(55 139 250 / 0.83)",
         borderRadius: 20,
+        paddingVertical: 20,
+        marginHorizontal: 16,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    pressed: {
+        backgroundColor: "rgb(9 88 186 / 0.83)",   // ciemniejszy odcień
+        transform: [{ scale: 0.97 }],
+    },
+    disabled: {
+        backgroundColor: "#CBD5E1",   // szary — „nie ma czego dodać"
     },
     text: {
-        fontSize: 20,
-        fontWeight: "bold",
         color: "#FFFFFF",
-        textAlign: "center"
-    }
-})
+        fontSize: 22,
+        fontWeight: "bold",
+    },
+});
 
-export default style
+export default style;
