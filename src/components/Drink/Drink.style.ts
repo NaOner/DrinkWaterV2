@@ -1,4 +1,4 @@
-// src/components/Drink/Drink.style.ts
+// src/components/DrinkTypes/DrinkTypes.style.ts
 import { StyleSheet } from "react-native";
 
 const style = StyleSheet.create({

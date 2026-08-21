@@ -1,18 +1,10 @@
 import {Text, Pressable} from "react-native";
 import style from "./Drink.style"
-import React from "react";
 
-import {DRINK_ICONS} from "@/constants/Drinks";
-import {DrinkType} from "@/constants/Drinks";
+import { type DrinkComponentTypes } from "@/types/DrinkTypes";
+import { DRINK_ICONS } from "@/constants/DrinkConsts";
 
-type Props = {
-    amount: number,
-    type: DrinkType,
-    selected?: boolean,
-    onPress?: () => void,
-}
-
-function Drink({amount, type, selected = false, onPress }: Props){
+function Drink({amount, type, selected = false, onPress}: DrinkComponentTypes){
 
     const Icon = DRINK_ICONS[type]
 

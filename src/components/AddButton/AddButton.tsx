@@ -5,13 +5,16 @@ import style from "./AddButton.style";
 type Props = {
     amount: number;
     disabled?: boolean;
-    onPress: () => void;
 };
 
-function AddButton({ amount, disabled = false, onPress }: Props) {
+function handleAdd(){
+
+}
+
+function AddButton({ amount, disabled = false}: Props) {
     return (
         <Pressable
-            onPress={onPress}
+            onPress={handleAdd}
             disabled={disabled}
             style={({ pressed }) => [
                 style.component,
