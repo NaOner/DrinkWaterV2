@@ -18,3 +18,10 @@ export const PRESETS: { id: string; amount: number; type: DrinkType }[] = [
     { id: "coffee", amount: 100, type: "coffee" },
     { id: "glass",  amount: 250, type: "glass" },
 ] as const
+
+export type DrinkEntry = {
+    id: string,
+    at: number,
+    amount: number
+    type: DrinkType
+}
