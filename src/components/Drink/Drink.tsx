@@ -2,19 +2,17 @@ import {Text, Pressable} from "react-native";
 import style from "./Drink.style"
 import React from "react";
 
-import {DRINK_ICONS} from "@/constants/Drinks";
-import {DrinkType} from "@/constants/Drinks";
+import {DRINK_IMAGES} from "@/constants/drinkConsts";
+import { DrinkPreset } from "@/types/drinkTypes";
+import {Image} from "expo-image";
 
-type Props = {
-    amount: number,
-    type: DrinkType,
+interface Props {
     selected?: boolean,
     onPress?: () => void,
+    drink: DrinkPreset
 }
 
-function Drink({amount, type, selected = false, onPress }: Props){
-
-    const Icon = DRINK_ICONS[type]
+function Drink({selected = false, onPress, drink }: Props){
 
     return(
         <Pressable
@@ -22,12 +20,16 @@ function Drink({amount, type, selected = false, onPress }: Props){
             style={({ pressed }) => [
                 style.component,
                 selected && style.selected,
-                pressed && style.pressed,      // ← ostatni, więc nadpisuje kolor selected
+                pressed && style.pressed,
             ]}
         >
-            <Icon width={44} height={44} />
-            <Text style={style.text}>{type}</Text>
-            <Text style={style.text}>{amount} ml</Text>
+            <Image source={DRINK_IMAGES[drink.type]}
+                   style={{
+                       width: 44,
+                       height: 44
+            }}/>
+            <Text style={style.text}>{drink.type}</Text>
+            <Text style={style.text}>{drink.volume} ml</Text>
         </Pressable>
     )
 }

@@ -1,25 +1,40 @@
-// src/components/AddButton/AddButton.tsx
 import { Pressable, Text } from "react-native";
 import style from "./AddButton.style";
 
-type Props = {
-    amount: number;
-    disabled?: boolean;
-    onPress: () => void;
-};
+import { DrinkPreset } from "@/types/drinkTypes";
 
-function AddButton({ amount, disabled = false, onPress }: Props) {
+interface Props {
+    amount: number;
+    drink: DrinkPreset
+}
+
+function AddButton({ drink }: Props) {
+
+    function handleAdd(drink: DrinkPreset){
+
+        const saveData = async () => {
+            try {
+
+
+
+            } catch (e){
+                console.log("Saving data failed")
+            }
+        }
+        console.log(drink)
+
+        return null
+    }
+
     return (
         <Pressable
-            onPress={onPress}
-            disabled={disabled}
+            onPress={() => handleAdd(drink)}
             style={({ pressed }) => [
                 style.component,
                 pressed && style.pressed,
-                disabled && style.disabled,
             ]}
         >
-            <Text style={style.text}>+ {amount} ml</Text>
+            <Text style={style.text}>+ {drink.volume} ml</Text>
         </Pressable>
     );
 }

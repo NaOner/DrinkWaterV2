@@ -14,9 +14,6 @@ const style = StyleSheet.create({
         backgroundColor: "rgb(9 88 186 / 0.83)",   // ciemniejszy odcień
         transform: [{ scale: 0.97 }],
     },
-    disabled: {
-        backgroundColor: "#CBD5E1",   // szary — „nie ma czego dodać"
-    },
     text: {
         color: "#FFFFFF",
         fontSize: 22,
