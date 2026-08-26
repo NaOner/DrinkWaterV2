@@ -6,7 +6,7 @@ export const DRINK_TYPE_ENUM = {
 
 export type DrinkType = (typeof DRINK_TYPE_ENUM)[keyof typeof DRINK_TYPE_ENUM]
 
-export interface DrinkPreset {
+export interface DrinkRecord {
     id: string,
     volume: number,
     type: DrinkType,

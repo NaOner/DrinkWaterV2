@@ -1,26 +1,16 @@
 import { Pressable, Text } from "react-native";
 import style from "./AddButton.style";
 
-import { DrinkPreset } from "@/types/drinkTypes";
+import { useDrinkRecords } from "@/storage/drinkStorage";
+import { DrinkRecord } from "@/types/drinkTypes";
 
-interface Props {
-    amount: number;
-    drink: DrinkPreset
-}
+function AddButton( drink: DrinkRecord) {
 
-function AddButton({ drink }: Props) {
+    
 
-    function handleAdd(drink: DrinkPreset){
-
-        const saveData = async () => {
-            try {
+    function handleAdd(drink: DrinkRecord){
 
 
-
-            } catch (e){
-                console.log("Saving data failed")
-            }
-        }
         console.log(drink)
 
         return null
