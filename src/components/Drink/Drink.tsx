@@ -3,13 +3,13 @@ import style from "./Drink.style"
 import React from "react";
 
 import {DRINK_IMAGES} from "@/constants/drinkConsts";
-import { DrinkPreset } from "@/types/drinkTypes";
+import { DrinkRecord } from "@/types/drinkTypes";
 import {Image} from "expo-image";
 
 interface Props {
     selected?: boolean,
     onPress?: () => void,
-    drink: DrinkPreset
+    drink: DrinkRecord
 }
 
 function Drink({selected = false, onPress, drink }: Props){

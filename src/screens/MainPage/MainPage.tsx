@@ -8,28 +8,25 @@ import { UndoButton } from "@/components/UndoButton";
 import { Counter } from "@/components/Counter";
 
 import { PRESETS } from "@/constants/drinkConsts"
+import { useDrinkRecords } from "@/storage/drinkStorage";
+import { styles } from "./MainPage.styles";
+
 
 function MainPage() {
+    const {sum, addDrink, undoLastDrink} = useDrinkRecords()
     const [selectedId, setSelectedId] = useState<string>(PRESETS[0].id);
-    const [sum, setSum] = useState<number>(0)
 
     const selected = PRESETS.find((p) => p.id === selectedId) || PRESETS[0];
 
+
+
     return (
-        <SafeAreaView
-            style={{
-                flex: 1
-        }}>
+        <SafeAreaView style={styles.container}>
             <Counter
                 current={sum}
                 goal={2000}
             />
-            <View
-                style={{
-                    flexDirection: "row",
-                    gap: 9,
-                    padding: 16
-            }}>
+            <View style={styles.presetsRow}>
                 {PRESETS.map((preset) => (
                     <Drink
                         key={preset.id}
@@ -41,10 +38,12 @@ function MainPage() {
             </View>
 
             <AddButton
+                addDrink={addDrink}
                 drink={selected}
-                amount={selected.volume}
             />
-            <UndoButton/>
+            <UndoButton
+                onUndo={undoLastDrink}
+            />
         </SafeAreaView>
     );
 }
