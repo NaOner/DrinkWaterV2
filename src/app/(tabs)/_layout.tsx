@@ -7,12 +7,8 @@ export default function TabLayout(){
                 headerShown: false,
             }}
         >
-            <Tabs.Screen
-                name="index"
-                options={{
-                    title: "Main"
-                    }}
-            />
+            <Tabs.Screen name="index" options={{title: "Main"}}/>
+            <Tabs.Screen name="HistoryPage" options={{title: "History"}}/>
         </Tabs>
     )
 }

@@ -8,7 +8,7 @@ import { UndoButton } from "@/components/UndoButton";
 import { Counter } from "@/components/Counter";
 
 import { PRESETS } from "@/constants/drinkConsts"
-import { useDrinkRecords } from "@/storage/drinkStorage";
+import { useDrinkRecords } from "@/hooks/useDrinkRecords";
 import { styles } from "./MainPage.styles";
 
 

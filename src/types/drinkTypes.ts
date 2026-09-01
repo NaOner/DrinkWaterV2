@@ -12,4 +12,8 @@ export interface DrinkRecord {
     type: DrinkType,
 }
 
+export interface DrinkRecordWithDate extends DrinkRecord {
+    date: number
+}
+
 
