@@ -7,6 +7,7 @@ export default function TabLayout(){
                 headerShown: false,
             }}
         >
+            <Tabs.Screen name="FormPage" options={{title: "Form"}}/>
             <Tabs.Screen name="index" options={{title: "Main"}}/>
             <Tabs.Screen name="HistoryPage" options={{title: "History"}}/>
         </Tabs>

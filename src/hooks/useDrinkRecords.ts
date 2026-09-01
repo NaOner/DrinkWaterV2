@@ -3,7 +3,7 @@ import {useCallback, useEffect, useState} from "react";
 import * as Crypto from "expo-crypto"
 
 import {DrinkRecord, DrinkRecordWithDate} from "@/types/drinkTypes";
-import { STORAGE_KEYS } from "@/constants/storage";
+import { STORAGE_KEYS } from "@/constants/Storage";
 
 interface UseDrinkRecordsReturn {
     drinkRecords: DrinkRecordWithDate[];
