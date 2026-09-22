@@ -1,32 +1,29 @@
-import {SafeAreaView} from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { styles } from "./History.style"
+import { styles } from "./History.style";
 
+import { Calendar } from "@/components/Calendar";
 import { HistoryDisplay } from "@/components/HistoryDisplay";
 
 import { useDrinkRecords } from "@/hooks/useDrinkRecords";
-import {useFocusEffect} from "expo-router";
-import {useCallback} from "react";
+import { useFocusEffect } from "expo-router";
+import { useCallback } from "react";
 
+function History() {
+  const { drinkRecords, refetch } = useDrinkRecords();
 
-function History(){
+  useFocusEffect(
+    useCallback(() => {
+      void refetch();
+    }, [refetch]),
+  );
 
-    const { drinkRecords, refetch } = useDrinkRecords();
-
-    useFocusEffect(
-        useCallback(() => {
-            void refetch()
-        }, [refetch])
-    )
-
-    return(
-        <SafeAreaView
-            style={styles.container}>
-            <HistoryDisplay
-                records={drinkRecords}
-            />
-        </SafeAreaView>
-    )
+  return (
+    <SafeAreaView style={styles.container}>
+      <Calendar />
+      <HistoryDisplay records={drinkRecords} />
+    </SafeAreaView>
+  );
 }
 
-export default History
+export default History;
