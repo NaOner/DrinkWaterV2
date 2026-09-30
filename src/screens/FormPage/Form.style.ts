@@ -34,28 +34,10 @@ const style = StyleSheet.create({
         fontSize: 16,
         fontWeight: "600",
         color: "#374151",
-        marginTop: 28,
         marginBottom: 12,
     },
-    checkboxRow: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 12,
-        backgroundColor: "#FFFFFF",
-        paddingVertical: 14,
-        paddingHorizontal: 16,
-        borderRadius: 12,
-        marginBottom: 8,
-        borderWidth: 1,
-        borderColor: "#E5E7EB",
-    },
-    checkboxRowSelected: {
-        backgroundColor: "#EFF6FF",
-        borderColor: "#3B82F6",
-    },
-    checkboxLabel: {
-        fontSize: 16,
-        color: "#1F2937",
+    checkboxSection: {
+        marginTop: 28,
     },
     resultCard: {
         marginTop: 32,
