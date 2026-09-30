@@ -2,8 +2,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./History.style";
 
-import { Calendar } from "@/components/Calendar";
-import { HistoryDisplay } from "@/components/HistoryDisplay";
+import { Calendar } from "@/components/HistoryPage/CalendarDisplay";
+import { HistoryDisplay } from "@/components/HistoryPage/HistoryDisplay";
 
 import { useDrinkRecords } from "@/hooks/useDrinkRecords";
 import { useFocusEffect } from "expo-router";

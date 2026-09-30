@@ -1,7 +1,5 @@
-import { History } from "@/screens/History";
+import { History } from "@/screens/HistoryPage";
 
-export default function HistoryPage(){
-    return(
-        <History/>
-    )
+export default function HistoryPage() {
+  return <History />;
 }
