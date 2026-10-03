@@ -8,8 +8,8 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen name="SettingsPage" options={{ title: "Settings" }} />
-      <Tabs.Screen name="MainPage" options={{ title: "Main" }} />
       <Tabs.Screen name="HistoryPage" options={{ title: "History" }} />
+      <Tabs.Screen name="MainPage" options={{ title: "Main" }} />
     </Tabs>
   );
 }
