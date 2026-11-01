@@ -3,10 +3,10 @@ import { ScrollView, Text } from "react-native";
 import { DrinkHistoryElement } from "@/components/HistoryPage/DrinkHistoryElement";
 
 import style from "./HistoryDisplay.style";
-import { DrinkRecordWithDate } from "@/types/drinkTypes";
+import { DrinkRecord } from "@/types/drinkTypes";
 
 interface Props {
-  records: DrinkRecordWithDate[];
+  records: DrinkRecord[];
 }
 
 function HistoryDisplay({ records }: Props) {

@@ -1,19 +1,27 @@
 export const DRINK_TYPE_ENUM = {
-    Water: "Water",
-    Tea: "Tea",
-    Coffee: "Coffee",
-} as const
+  Water: "Water",
+  Tea: "Tea",
+  Coffee: "Coffee",
+} as const;
 
-export type DrinkType = (typeof DRINK_TYPE_ENUM)[keyof typeof DRINK_TYPE_ENUM]
+export type TypesOfDrinks =
+  (typeof DRINK_TYPE_ENUM)[keyof typeof DRINK_TYPE_ENUM];
 
 export interface DrinkRecord {
-    id: string,
-    volume: number,
-    type: DrinkType,
+  id: string;
+  volume: number;
+  type: TypesOfDrinks;
+  date: number;
 }
 
-export interface DrinkRecordWithDate extends DrinkRecord {
-    date: number
+export interface DayRecordInHistory {
+  limit: number;
+  date: number;
+  history: DrinkRecord[];
 }
 
-
+export interface DrinkItem {
+  id: string;
+  volume: number;
+  type: TypesOfDrinks;
+}

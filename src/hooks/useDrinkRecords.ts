@@ -3,22 +3,22 @@ import * as Crypto from "expo-crypto";
 import { useCallback, useEffect, useState } from "react";
 
 import { STORAGE_KEYS } from "@/constants/StorageKeys";
-import { DrinkRecord, DrinkRecordWithDate } from "@/types/drinkTypes";
+import { DrinkItem, DrinkRecord } from "@/types/drinkTypes";
 
 interface UseDrinkRecordsReturn {
-  drinkRecords: DrinkRecordWithDate[];
+  drinkRecords: DrinkRecord[];
   sum: number;
-  addDrink: (drink: DrinkRecord) => void;
+  addDrink: (drink: DrinkItem) => void;
   undoLastDrink: () => void;
   refetch: () => void;
 }
 
-function parseDrinkRecords(json: string): DrinkRecordWithDate[] {
-  return JSON.parse(json) as DrinkRecordWithDate[];
+function parseDrinkRecords(json: string): DrinkRecord[] {
+  return JSON.parse(json) as DrinkRecord[];
 }
 
 export function useDrinkRecords(): UseDrinkRecordsReturn {
-  const [drinkRecords, setDrinkRecords] = useState<DrinkRecordWithDate[]>([]);
+  const [drinkRecords, setDrinkRecords] = useState<DrinkRecord[]>([]);
 
   const fetchDrinkRecords = useCallback(async () => {
     try {
@@ -34,23 +34,20 @@ export function useDrinkRecords(): UseDrinkRecordsReturn {
     void fetchDrinkRecords();
   }, [fetchDrinkRecords]);
 
-  const saveDrinkRecords = useCallback(
-    async (records: DrinkRecordWithDate[]) => {
-      try {
-        await AsyncStorage.setItem(
-          STORAGE_KEYS.DRINK_RECORDS,
-          JSON.stringify(records),
-        );
-      } catch (e) {
-        console.log("Error, while saving data");
-      }
-    },
-    [],
-  );
+  const saveDrinkRecords = useCallback(async (records: DrinkRecord[]) => {
+    try {
+      await AsyncStorage.setItem(
+        STORAGE_KEYS.DRINK_RECORDS,
+        JSON.stringify(records),
+      );
+    } catch (e) {
+      console.log("Error, while saving data");
+    }
+  }, []);
 
   const addDrink = useCallback(
-    (drink: DrinkRecord) => {
-      const addDate = (element: DrinkRecord): DrinkRecordWithDate => {
+    (drink: DrinkItem) => {
+      const addDate = (element: DrinkItem): DrinkRecord => {
         return {
           ...element,
           date: Date.now(),
