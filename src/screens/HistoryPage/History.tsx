@@ -2,7 +2,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "./History.style";
 
-import { Calendar } from "@/components/HistoryPage/CalendarDisplay";
+import { CurentWeekDisplay } from "@/components/CalendarPage/CurentWeekDisplay";
 import { HistoryDisplay } from "@/components/HistoryPage/HistoryDisplay";
 
 import { useDrinkRecords } from "@/hooks/useDrinkRecords";
@@ -20,7 +20,7 @@ function History() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Calendar />
+      <CurentWeekDisplay />
       <HistoryDisplay records={drinkRecords} />
     </SafeAreaView>
   );
