@@ -1,29 +1,29 @@
 import { Text, View } from "react-native";
 
-import { UserRecords } from "@/types/SetupFormTypes";
+import { UserData } from "@/types/SetupFormTypes";
 import style from "./DataDisplay.style";
 
 interface Props {
-  userRecords: UserRecords;
+  userData: UserData;
 }
 
-export default function DataDisplay({ userRecords }: Props) {
+export default function DataDisplay({ userData }: Props) {
   return (
     <View style={style.resultCard}>
       <View style={style.resultRow}>
         <Text style={style.resultLabel}>Gender</Text>
-        <Text style={style.resultValue}>{userRecords.gender || "—"}</Text>
+        <Text style={style.resultValue}>{userData.gender || "—"}</Text>
       </View>
       <View style={style.resultRow}>
         <Text style={style.resultLabel}>Weight</Text>
         <Text style={style.resultValue}>
-          {userRecords.weight ? `${userRecords.weight} kg` : "—"}
+          {userData.weight ? `${userData.weight} kg` : "—"}
         </Text>
       </View>
       <View style={style.resultRow}>
         <Text style={style.resultLabel}>Daily limit</Text>
         <Text style={style.limitValue}>
-          {userRecords.limit > 0 ? `${userRecords.limit} ml` : "—"}
+          {userData.limit > 0 ? `${userData.limit} ml` : "—"}
         </Text>
       </View>
     </View>

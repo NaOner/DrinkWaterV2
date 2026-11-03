@@ -3,12 +3,12 @@ import * as Crypto from "expo-crypto";
 import { useCallback, useEffect, useState } from "react";
 
 import { STORAGE_KEYS } from "@/constants/StorageKeys";
-import { DrinkItem, DrinkRecord } from "@/types/drinkTypes";
+import { DrinkPreset, DrinkRecord } from "@/types/drinkTypes";
 
 interface UseDrinkRecordsReturn {
   drinkRecords: DrinkRecord[];
   sum: number;
-  addDrink: (drink: DrinkItem) => void;
+  addDrink: (drink: DrinkPreset) => void;
   undoLastDrink: () => void;
   refetch: () => void;
 }
@@ -46,8 +46,8 @@ export function useDrinkRecords(): UseDrinkRecordsReturn {
   }, []);
 
   const addDrink = useCallback(
-    (drink: DrinkItem) => {
-      const addDate = (element: DrinkItem): DrinkRecord => {
+    (drink: DrinkPreset) => {
+      const addDate = (element: DrinkPreset): DrinkRecord => {
         return {
           ...element,
           date: Date.now(),

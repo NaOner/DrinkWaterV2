@@ -15,7 +15,7 @@ import { PRESETS } from "@/constants/drinkConsts";
 
 function MainPage() {
   const { sum, addDrink, undoLastDrink } = useDrinkRecords();
-  const { userRecords, refetch } = useSetupForms();
+  const { userData, refetch } = useSetupForms();
 
   useEffect(() => {
     void refetch();
@@ -27,7 +27,7 @@ function MainPage() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Counter current={sum} goal={userRecords.limit} />
+      <Counter current={sum} goal={userData.limit} />
       <View style={styles.presetsRow}>
         {PRESETS.map((preset) => (
           <Drink

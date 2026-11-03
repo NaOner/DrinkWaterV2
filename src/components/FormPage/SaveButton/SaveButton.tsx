@@ -1,19 +1,19 @@
 import { Text, TouchableOpacity, View } from "react-native";
 
-import { UserRecords } from "@/types/SetupFormTypes";
+import { UserData } from "@/types/SetupFormTypes";
 import style from "./SaveButton.style";
 
 interface Props {
-  userRecords: UserRecords;
+  userData: UserData;
   save: () => void;
 }
 
-export default function SaveButton({ userRecords, save }: Props) {
+export default function SaveButton({ userData, save }: Props) {
   const canSave = () => {
     if (
-      userRecords.gender != "" &&
-      userRecords.weight != 0 &&
-      userRecords.limit != 0
+      userData.gender != "" &&
+      userData.weight != 0 &&
+      userData.limit != 0
     ) {
       return true;
     } else {
@@ -25,7 +25,7 @@ export default function SaveButton({ userRecords, save }: Props) {
       <TouchableOpacity
         style={canSave() ? style.activeButton : style.unactiveButton}
         onPress={() => {
-          if (userRecords.gender && userRecords.weight) {
+          if (userData.gender && userData.weight) {
             save();
             console.log("Saved");
           } else {

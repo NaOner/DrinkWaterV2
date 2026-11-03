@@ -2,17 +2,17 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback, useEffect, useState } from "react";
 
 import { STORAGE_KEYS } from "@/constants/StorageKeys";
-import { Genders, UseForms, UserRecords } from "@/types/SetupFormTypes";
+import { Genders, UseForms, UserData } from "@/types/SetupFormTypes";
 
 export function useSetupForms(): UseForms {
-  const [userRecords, setUserRecords] = useState<UserRecords>({
+  const [userData, setUserData] = useState<UserData>({
     limit: 0,
     gender: "Man",
-    weight: 0,
+    weight: 70,
   });
 
   function changeGender(gender: Genders) {
-    setUserRecords((prev) => {
+    setUserData((prev) => {
       const records = { ...prev };
       records.gender = gender;
       calculateLimit(records);
@@ -21,7 +21,7 @@ export function useSetupForms(): UseForms {
   }
 
   function changeWeight(weight: number) {
-    setUserRecords((prev) => {
+    setUserData((prev) => {
       const records = { ...prev };
       records.weight = weight;
       calculateLimit(records);
@@ -29,42 +29,42 @@ export function useSetupForms(): UseForms {
     });
   }
 
-  function calculateLimit(userRecords: UserRecords) {
-    if (userRecords.gender === "Man" && userRecords.weight > 0) {
-      userRecords.limit = userRecords.weight * 35;
-    } else if (userRecords.gender === "Female" && userRecords.weight > 0) {
-      userRecords.limit = userRecords.weight * 30;
-    } else if (userRecords.gender === "Other" && userRecords.weight > 0) {
-      userRecords.limit = userRecords.weight * 32.5;
+  function calculateLimit(userData: UserData) {
+    if (userData.gender === "Man" && userData.weight > 0) {
+      userData.limit = userData.weight * 35;
+    } else if (userData.gender === "Female" && userData.weight > 0) {
+      userData.limit = userData.weight * 30;
+    } else if (userData.gender === "Other" && userData.weight > 0) {
+      userData.limit = userData.weight * 32.5;
     }
   }
 
-  function parseDrinkRecords(json: string): UserRecords {
-    return JSON.parse(json) as UserRecords;
+  function parseDrinkRecords(json: string): UserData {
+    return JSON.parse(json) as UserData;
   }
 
-  // Zapisuje obiekt userRecords {limit, gender, weight} do async
-  const saveUserRecords = useCallback(async (userRecords: UserRecords) => {
-    console.log(userRecords);
+  // Zapisuje obiekt userData {limit, gender, weight} do async
+  const saveUserData = useCallback(async (userData: UserData) => {
+    console.log(userData);
     try {
       await AsyncStorage.setItem(
         STORAGE_KEYS.FORM_RECORDS,
-        JSON.stringify(userRecords),
+        JSON.stringify(userData),
       );
-      console.log(userRecords);
+      console.log(userData);
     } catch (e) {
       console.log("Failed while saving");
     }
   }, []);
 
   // Łapie dane
-  const fetchUserRecords = useCallback(async () => {
+  const fetchUserData = useCallback(async () => {
     console.log("test");
     try {
       const json = await AsyncStorage.getItem(STORAGE_KEYS.FORM_RECORDS);
       if (json === null) return [];
       console.log(json);
-      setUserRecords(parseDrinkRecords(json));
+      setUserData(parseDrinkRecords(json));
     } catch (e) {
       console.log("Error, while fetching data");
     }
@@ -72,14 +72,14 @@ export function useSetupForms(): UseForms {
 
   //Robi fetch jak się renderuje
   useEffect(() => {
-    void fetchUserRecords();
-  }, [fetchUserRecords]);
+    void fetchUserData();
+  }, [fetchUserData]);
 
   return {
-    userRecords,
+    userData,
     setGender: changeGender,
     setWeight: changeWeight,
-    saveUserRecords: saveUserRecords,
-    refetch: fetchUserRecords,
+    saveUserData: saveUserData,
+    refetch: fetchUserData,
   };
 }

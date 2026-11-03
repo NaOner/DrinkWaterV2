@@ -1,11 +1,11 @@
 import { Pressable, Text } from "react-native";
 import style from "./AddButton.style";
 
-import { DrinkItem } from "@/types/drinkTypes";
+import { DrinkPreset } from "@/types/drinkTypes";
 
 interface Prop {
-  addDrink: (test: DrinkItem) => void;
-  drink: DrinkItem;
+  addDrink: (test: DrinkPreset) => void;
+  drink: DrinkPreset;
 }
 
 function AddButton({ addDrink, drink }: Prop) {

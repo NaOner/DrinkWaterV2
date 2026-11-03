@@ -4,24 +4,24 @@ import { Text, TouchableOpacity, View } from "react-native";
 // Consts
 import { GENDERS } from "@/constants/FormConsts";
 // Types
-import { UserRecords } from "@/types/SetupFormTypes";
+import { UserData } from "@/types/SetupFormTypes";
 // Styles
 import style from "./GendersCheckbox.style";
 
 export type Genders = (typeof GENDERS)[keyof typeof GENDERS];
 
 interface Props {
-  userRecords: UserRecords;
+  userData: UserData;
   gender: Genders;
   setter: (gender: Genders) => void;
 }
 
 export default function GendersCheckbox({
-  userRecords,
+  userData,
   gender,
   setter,
 }: Props) {
-  const isSelected = userRecords.gender === gender;
+  const isSelected = userData.gender === gender;
 
   return (
     <TouchableOpacity onPress={() => setter(gender)} activeOpacity={1}>
